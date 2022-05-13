@@ -1,0 +1,19 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+canvas {
+    border-bottom: 4px ridge blue;
+}
+
+.chart-container {
+    background-color: aliceblue;
+    border: 4px ridge blue;
+    border-bottom: none;
+    position: relative;
+    margin: auto;
+    /* height: 50vh; */
+    width: 75vw;
+}
