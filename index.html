@@ -10,14 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.2.1/dist/chartjs-plugin-zoom.min.js"></script>
     <!-- <script defer src="temp.js"></script>
     <script defer src="temp2.js"></script>
     <script defer src="temp3.js"></script>
-    <script defer src="temp4.js"></script> -->
+    <script defer src="temp4.js"></script>
+    <script defer src="temp5.js"></script> -->
     <script defer src="main.js"></script>
     <title>Data Visualization 😊</title>
 </head>
@@ -25,6 +27,53 @@
 <body>
     <h1>Data Stuff</h1>
     <p>Putting data onto a big chart.</p>
+    <div class="form-container">
+        <form action="" method="get">
+            <div>
+                <h3>Input Your Own Data!</h3>
+            </div>
+            <div class="simple-container">
+                <div class="form-input">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="input_title" placeholder="Epic Title">
+                </div>
+                <div class="form-input">
+                    <label for="xAxis">X-Axis Title</label>
+                    <input type="text" id="xAxis" name="input_xAxis" placeholder="X-Axis Title">
+                </div>
+                <div class="form-input">
+                    <label for="yAxis">Y-Axis Title</label>
+                    <input type="text" id="yAxis" name="input_yAxis" placeholder="Y-Axis Title">
+                </div>
+                <div class="form-input">
+                    <label for="labels">Labels</label>
+                    <input type="text" id="labels" name="input_labels" placeholder="year,extent,area">
+                </div>
+                <div class="form-input">
+                    <label for="csv-data">Data</label>
+                    <textarea id="csv-data" name="input_data" rows="5" placeholder=""></textarea>
+                </div>
+                <div class="div-spacing">
+                    <button type="button" id="form-submit" onclick="parseInput()">Add!</button>
+                </div>
+            </div>
+            <div class="advanced-container">
+                <div class="form-input">
+                    <label for="json-data">JSON</label>
+                    <textarea id="json-data" name="input_json" rows="20" placeholder=""></textarea>
+                </div>
+                <div class="form-input">
+                    <button type="button" id="json-submit" onclick="parseInputAdvanced()">Add!</button>
+                </div>
+            </div>
+            <div class="div-spacing">
+                <button type="button" id="switch-input" onclick="switchInput()">Advanced</button>
+            </div>
+        </form>
+    </div>
+    <div class="options-container">
+        <button type="button" id="button-options">Add!</button>
+    </div>
     <div class="chart-container"></div>
 </body>
 
