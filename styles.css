@@ -33,6 +33,11 @@ button {
     margin: 10px auto;
 }
 
+#input-form {
+    display: none;
+    visibility: hidden;
+}
+
 .form-container {
     margin: auto;
     margin-top: 16px;
@@ -45,8 +50,6 @@ button {
 .simple-container {
     display: block;
     visibility: visible;
-    display: none; /*temp*/
-    visibility: hidden; /*temp*/
 }
 
 .advanced-container {

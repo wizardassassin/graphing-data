@@ -258,13 +258,13 @@ function switchInput() {
     if (isAdvanced) {
         showDiv(simple);
         hideDiv(advanced);
-        button.textContent = "Advanced";
+        button.textContent = "Advanced Mode";
         isAdvanced = false;
         return;
     }
     showDiv(advanced);
     hideDiv(simple);
-    button.textContent = "Simple";
+    button.textContent = "Simple Mode";
     isAdvanced = true;
 }
 
@@ -276,4 +276,20 @@ function hideDiv(div) {
 function showDiv(div) {
     div.style.display = "block";
     div.style.visibility = "visible";
+}
+
+let isHidden = true;
+
+function dropdownToggle() {
+    const div = document.getElementById("input-form");
+    const button = document.getElementById("menu-toggle");
+    if (isHidden) {
+        showDiv(div);
+        button.textContent = "Hide!";
+        isHidden = false;
+        return;
+    }
+    hideDiv(div);
+    button.textContent = "Show!";
+    isHidden = true;
 }
