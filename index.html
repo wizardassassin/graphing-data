@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Puts data onto a big chart.">
+    <link rel="icon" href="images/circles_black_transparent.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -28,11 +29,14 @@
     <h1>Data Stuff</h1>
     <p>Putting data onto a big chart.</p>
     <div class="form-container">
-        <form action="" method="get">
-            <div>
-                <h3>Input Your Own Data!</h3>
-            </div>
-            <div class="simple-container">
+        <div>
+            <h3>Input Your Own Data!</h3>
+        </div>
+        <div class="div-spacing">
+            <button type="button" id="menu-toggle" onclick="dropdownToggle()">Show!</button>
+        </div>
+        <form id="input-form" action="" method="get">
+            <div class="dropdown-toggle simple-container">
                 <div class="form-input">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="input_title" placeholder="Epic Title">
@@ -57,7 +61,7 @@
                     <button type="button" id="form-submit" onclick="parseInput()">Add!</button>
                 </div>
             </div>
-            <div class="advanced-container">
+            <div class="dropdown-toggle advanced-container">
                 <div class="form-input">
                     <label for="json-data">JSON</label>
                     <textarea id="json-data" name="input_json" rows="20" placeholder=""></textarea>
@@ -66,8 +70,8 @@
                     <button type="button" id="json-submit" onclick="parseInputAdvanced()">Add!</button>
                 </div>
             </div>
-            <div class="div-spacing">
-                <button type="button" id="switch-input" onclick="switchInput()">Advanced</button>
+            <div class="dropdown-toggle div-spacing">
+                <button type="button" id="switch-input" onclick="switchInput()">Advanced Mode</button>
             </div>
         </form>
     </div>
