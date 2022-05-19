@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     background-color: aquamarine;
     text-align: center;
 }
@@ -8,8 +8,66 @@ canvas {
     border-bottom: 4px ridge blue;
 }
 
-.chart-container {
+textarea {
+    vertical-align: top;
+}
+
+label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+input,
+textarea {
+    width: 400px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: lightgreen;
+}
+
+.form-input,
+.div-spacing {
+    margin: 10px auto;
+}
+
+.form-container {
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 50vw;
     background-color: aliceblue;
+    border: 4px ridge black;
+}
+
+.simple-container {
+    display: block;
+    visibility: visible;
+    display: none; /*temp*/
+    visibility: hidden; /*temp*/
+}
+
+.advanced-container {
+    display: none;
+    visibility: hidden;
+}
+
+.options-container {
+    display: none; /*temp*/
+    visibility: hidden; /*temp*/
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 50vw;
+    height: 100px; /*temp*/
+    background-color: royalblue;
+    border: 4px ridge teal;
+}
+
+.chart-container {
+    background-color: rgb(130, 236, 236);
     border: 4px ridge blue;
     border-bottom: none;
     position: relative;
