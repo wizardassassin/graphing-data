@@ -213,6 +213,7 @@ async function parseData(obj, prependCanvas) {
 
 function parseInput() {
     const title = document.getElementById("title").value.trim() || "Epic Title";
+    const type = document.getElementById("type").value.trim() || "bar";
     const xAxisTitle =
         document.getElementById("xAxis").value.trim() || "X-Axis Title";
     const yAxisTitle =
@@ -231,7 +232,7 @@ function parseInput() {
         file: "",
         id: "",
         title,
-        type: "line",
+        type,
         xAxis: 0,
         yAxes,
         xAxisTitle,

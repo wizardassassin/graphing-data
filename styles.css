@@ -19,7 +19,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
     width: 400px;
     box-sizing: border-box;
 }
