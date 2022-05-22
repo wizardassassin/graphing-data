@@ -27,64 +27,79 @@
 
 <body>
     <h1>Data Stuff</h1>
-    <p>Putting data onto a big chart.</p>
-    <div class="form-container">
-        <div>
-            <h3>Input Your Own Data!</h3>
+    <p>
+        Putting data onto a big chart. <a href="https://github.com/wizardassassin/graphing-data" target="_blank"
+            rel="noopener noreferrer">Source Code</a>
+    </p>
+    <div id="main-input-container" class="form-container">
+        <div class="title-container">
+            <h3 id="form-title">Input Your Own Data!</h3>
         </div>
-        <div class="div-spacing">
-            <button type="button" id="menu-toggle" onclick="dropdownToggle()">Show!</button>
+        <div class="button-container">
+            <div class="div-spacing">
+                <button type="button" id="menu-toggle" onclick="dropdownToggle()">Show!</button>
+                <button type="button" id="menu-swap" onclick="menuSwitch()">Options</button>
+            </div>
         </div>
-        <form id="input-form" action="" method="get">
-            <div class="dropdown-toggle simple-container">
-                <div class="form-input">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="input_title" placeholder="Epic Title">
+        <div id="meta-container">
+            <div id="input-container">
+                <form id="input-form" action="" method="get">
+                    <div class="dropdown-toggle simple-container">
+                        <div class="form-input">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="input_title" placeholder="Epic Title">
+                        </div>
+                        <div class="form-input">
+                            <label for="xAxis">X-Axis Title</label>
+                            <input type="text" id="xAxis" name="input_xAxis" placeholder="X-Axis Title">
+                        </div>
+                        <div class="form-input">
+                            <label for="yAxis">Y-Axis Title</label>
+                            <input type="text" id="yAxis" name="input_yAxis" placeholder="Y-Axis Title">
+                        </div>
+                        <div class="form-input">
+                            <label for="type">Chart Type</label>
+                            <select name="input_type" id="type">
+                                <option value="">--Please Choose an Option--</option>
+                                <option value="line">Line Graph</option>
+                                <option value="bar">Bar Graph</option>
+                            </select>
+                        </div>
+                        <div class="form-input">
+                            <label for="labels">Labels</label>
+                            <input type="text" id="labels" name="input_labels" placeholder="year,extent,area">
+                        </div>
+                        <div class="form-input">
+                            <label for="csv-data">Data</label>
+                            <textarea id="csv-data" name="input_data" rows="5" placeholder=""></textarea>
+                        </div>
+                        <div class="div-spacing">
+                            <button type="button" id="form-submit" onclick="parseInput()">Add!</button>
+                            <button type="button" id="switch-input-advanced" onclick="switchInput()">Advanced
+                                Mode</button>
+                        </div>
+                    </div>
+                    <div class="dropdown-toggle advanced-container">
+                        <div class="form-input">
+                            <label for="json-data">JSON</label>
+                            <textarea id="json-data" name="input_json" rows="20" placeholder=""></textarea>
+                        </div>
+                        <div class="form-input">
+                            <button type="button" id="json-submit" onclick="parseInputAdvanced()">Add!</button>
+                            <button type="button" id="switch-input-simple" onclick="switchInput()">Simple Mode</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="options-container">
+                <div id="add-charts" class="render-inline">
+                    |Add Charts Here|
                 </div>
-                <div class="form-input">
-                    <label for="xAxis">X-Axis Title</label>
-                    <input type="text" id="xAxis" name="input_xAxis" placeholder="X-Axis Title">
-                </div>
-                <div class="form-input">
-                    <label for="yAxis">Y-Axis Title</label>
-                    <input type="text" id="yAxis" name="input_yAxis" placeholder="Y-Axis Title">
-                </div>
-                <div class="form-input">
-                    <label for="type">Chart Type</label>
-                    <select name="input_type" id="type">
-                        <option value="">--Please Choose an Option--</option>
-                        <option value="line">Line Graph</option>
-                        <option value="bar">Bar Graph</option>
-                    </select>
-                </div>
-                <div class="form-input">
-                    <label for="labels">Labels</label>
-                    <input type="text" id="labels" name="input_labels" placeholder="year,extent,area">
-                </div>
-                <div class="form-input">
-                    <label for="csv-data">Data</label>
-                    <textarea id="csv-data" name="input_data" rows="5" placeholder=""></textarea>
-                </div>
-                <div class="div-spacing">
-                    <button type="button" id="form-submit" onclick="parseInput()">Add!</button>
+                <div id="remove-charts" class="render-inline">
+                    |Remove Charts Here|
                 </div>
             </div>
-            <div class="dropdown-toggle advanced-container">
-                <div class="form-input">
-                    <label for="json-data">JSON</label>
-                    <textarea id="json-data" name="input_json" rows="20" placeholder=""></textarea>
-                </div>
-                <div class="form-input">
-                    <button type="button" id="json-submit" onclick="parseInputAdvanced()">Add!</button>
-                </div>
-            </div>
-            <div class="dropdown-toggle div-spacing">
-                <button type="button" id="switch-input" onclick="switchInput()">Advanced Mode</button>
-            </div>
-        </form>
-    </div>
-    <div class="options-container">
-        <button type="button" id="button-options">Add!</button>
+        </div>
     </div>
     <div class="chart-container"></div>
 </body>

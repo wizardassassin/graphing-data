@@ -72,7 +72,14 @@ const colors = [
     "rgb(235, 64, 52)",
     "rgb(50, 168, 82)",
 ];
+const patterns = [
+    "diagonal",
+    "dot-dash",
+    "diagonal-right-left",
+    "dash",
+];
 const colorsLen = colors.length;
+const patternsLen = patterns.length;
 
 const template = {
     file: "data/Arctic_Sea_Ice_Extent.csv",
@@ -133,7 +140,7 @@ async function parseData(obj, prependCanvas) {
                 const currColor = colors[i % colorsLen];
                 const defaultColor =
                     type == "bar"
-                        ? pattern.draw("diagonal", currColor)
+                        ? pattern.draw(patterns[i % patternsLen], currColor)
                         : currColor;
                 return {
                     label: label ?? headers[data],
@@ -251,7 +258,6 @@ function parseInputAdvanced() {
 }
 
 let isAdvanced = false;
-
 function switchInput() {
     const simple = document.querySelector("div.simple-container");
     const advanced = document.querySelector("div.advanced-container");
@@ -259,13 +265,13 @@ function switchInput() {
     if (isAdvanced) {
         showDiv(simple);
         hideDiv(advanced);
-        button.textContent = "Advanced Mode";
+        // button.textContent = "Advanced Mode";
         isAdvanced = false;
         return;
     }
     showDiv(advanced);
     hideDiv(simple);
-    button.textContent = "Simple Mode";
+    // button.textContent = "Simple Mode";
     isAdvanced = true;
 }
 
@@ -280,9 +286,8 @@ function showDiv(div) {
 }
 
 let isHidden = true;
-
 function dropdownToggle() {
-    const div = document.getElementById("input-form");
+    const div = document.getElementById("meta-container");
     const button = document.getElementById("menu-toggle");
     if (isHidden) {
         showDiv(div);
@@ -293,4 +298,30 @@ function dropdownToggle() {
     hideDiv(div);
     button.textContent = "Show!";
     isHidden = true;
+}
+
+let isOptions = false;
+function menuSwitch() {
+    const div1 = document.getElementsByClassName("form-container")[0];
+    const div2 = document.getElementById("input-container");
+    const div3 = document.getElementById("options-container");
+    const title = document.getElementById("form-title");
+    const button = document.getElementById("menu-swap");
+    if (isOptions) {
+        button.textContent = "Options";
+        div1.style["background-color"] = 'aliceblue';
+        button.style["background-color"] = 'royalblue';
+        title.textContent = "Input Your Own Data!";
+        showDiv(div2);
+        hideDiv(div3);
+        isOptions = false;
+        return;
+    }
+    div1.style["background-color"] = 'royalblue';
+    button.style["background-color"] = 'aliceblue';
+    title.textContent = "Configuration Settings";
+    button.textContent = "Input";
+    showDiv(div3);
+    hideDiv(div2);
+    isOptions = true;
 }

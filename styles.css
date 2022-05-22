@@ -2,6 +2,7 @@ body {
     font-family: "Roboto", sans-serif;
     background-color: aquamarine;
     text-align: center;
+    min-width: 1000px;
 }
 
 canvas {
@@ -29,17 +30,34 @@ button {
     background-color: lightgreen;
 }
 
+#menu-swap {
+    background-color: royalblue;
+}
+
 .form-input,
 .div-spacing {
     margin: 10px auto;
 }
 
-#input-form {
+#meta-container {
     display: none;
     visibility: hidden;
 }
 
+#switch-input-advanced {
+    background-color: red;
+}
+
+#switch-input-simple {
+    background-color: pink;
+}
+
+.render-inline {
+    display: inline-block;
+}
+
 .form-container {
+    min-width: 500px;
     margin: auto;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -58,19 +76,13 @@ button {
     visibility: hidden;
 }
 
-.options-container {
-    display: none; /*temp*/
-    visibility: hidden; /*temp*/
-    margin: auto;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    width: 50vw;
-    height: 100px; /*temp*/
-    background-color: royalblue;
-    border: 4px ridge teal;
+#options-container {
+    display: none;
+    visibility: hidden;
 }
 
 .chart-container {
+    min-width: 750px;
     background-color: rgb(130, 236, 236);
     border: 4px ridge blue;
     border-bottom: none;
