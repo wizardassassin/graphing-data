@@ -29,7 +29,7 @@
     <h1>Data Stuff</h1>
     <p>
         Putting data onto a big chart. <a href="https://github.com/wizardassassin/graphing-data" target="_blank"
-            rel="noopener noreferrer">Source Code</a>
+            rel="noopener noreferrer" class="external">Source Code</a>
     </p>
     <div id="main-input-container" class="form-container">
         <div class="title-container">
@@ -93,10 +93,35 @@
             </div>
             <div id="options-container">
                 <div id="add-charts" class="render-inline">
-                    |Add Charts Here|
+                    <div class="div-spacing">
+                        <label for="add-charts-select" class="not-fixed">
+                            <h4 class="header-spacing">Add Charts</h4>
+                        </label>
+                    </div>
+                    <div class="div-spacing">
+                        <select name="add-charts" id="add-charts-select">
+                            <option value="">--Please Choose an Option--</option>
+                            <option value="">Pizza</option>
+                        </select>
+                    </div>
+                    <div class="div-spacing">
+                        <button type="button" id="add-chart-button" onclick="addChart()">Add Chart!</button>
+                    </div>
                 </div>
                 <div id="remove-charts" class="render-inline">
-                    |Remove Charts Here|
+                    <div class="div-spacing">
+                        <label for="remove-charts-select" class="not-fixed">
+                            <h4 class="header-spacing">Remove Charts</h4>
+                        </label>
+                    </div>
+                    <div class="div-spacing">
+                        <select name="remove-charts" id="remove-charts-select">
+                            <option value="">--Please Choose an Option--</option>
+                        </select>
+                    </div>
+                    <div class="div-spacing">
+                        <button type="button" id="remove-chart-button" onclick="removeChart()">Remove Chart!</button>
+                    </div>
                 </div>
             </div>
         </div>
