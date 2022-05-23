@@ -13,7 +13,7 @@ textarea {
     vertical-align: top;
 }
 
-label {
+label:not(.not-fixed) {
     display: inline-block;
     width: 90px;
     text-align: right;
@@ -21,8 +21,12 @@ label {
 
 input,
 textarea,
-select {
+select#type {
     width: 400px;
+    box-sizing: border-box;
+}
+
+select {
     box-sizing: border-box;
 }
 
@@ -30,13 +34,48 @@ button {
     background-color: lightgreen;
 }
 
+a {
+    text-decoration: none;
+}
+
+a.external[target="_blank"]::after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin: 0px 3px 0px 5px;
+}
+
 #menu-swap {
-    background-color: royalblue;
+    background-color: rgb(131 131 233);
 }
 
 .form-input,
 .div-spacing {
     margin: 10px auto;
+}
+
+.header-spacing {
+    margin: 0px;
+}
+
+#add-charts-select {
+    margin: 10px;
+    display: block;
+}
+
+#remove-charts-select {
+    margin: 10px;
+    display: block;
+}
+
+#add-charts {
+    background-color: rgb(52, 64, 235);
+    margin: 10px;
+    border: 4px ridge yellow;
+}
+
+#remove-charts {
+    background-color: rgba(235, 64, 52);
+    margin: 10px;
+    border: 4px ridge yellow;
 }
 
 #meta-container {

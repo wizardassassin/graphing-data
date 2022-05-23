@@ -66,25 +66,20 @@ const files = [
     },
 ];
 
-const colors = [
+const colorArr = [
     "rgb(0, 100, 125, 20)",
     "rgb(66, 135, 245)",
     "rgb(235, 64, 52)",
     "rgb(50, 168, 82)",
 ];
-const patterns = [
-    "diagonal",
-    "dot-dash",
-    "diagonal-right-left",
-    "dash",
-];
-const colorsLen = colors.length;
-const patternsLen = patterns.length;
+const patternArr = ["diagonal", "dot-dash", "diagonal-right-left", "dash"];
+const colorLen = colorArr.length;
+const patternLen = patternArr.length;
 
 const template = {
     file: "data/Arctic_Sea_Ice_Extent.csv",
     id: "arctic-data",
-    title: "Arctic Sea Ice Extent",
+    title: "Arctic Sea Ice Extent 2",
     type: "bar",
     xAxis: 0,
     yAxes: [
@@ -137,10 +132,10 @@ async function parseData(obj, prependCanvas) {
         labels,
         datasets: yAxes.map(
             ({ label, backgroundColor, borderColor, data }, i) => {
-                const currColor = colors[i % colorsLen];
+                const currColor = colorArr[i % colorLen];
                 const defaultColor =
                     type == "bar"
-                        ? pattern.draw(patterns[i % patternsLen], currColor)
+                        ? pattern.draw(patternArr[i % patternLen], currColor)
                         : currColor;
                 return {
                     label: label ?? headers[data],
@@ -205,17 +200,29 @@ async function parseData(obj, prependCanvas) {
         options,
     };
 
+    addChartData({ config, prependCanvas, id });
+}
+
+function addChartData(obj) {
+    const { config, prependCanvas, id } = obj;
     const container = document.querySelector("div.chart-container");
     const chartCanvas = document.createElement("canvas");
     chartCanvas.setAttribute("id", id);
     const myChart = new Chart(chartCanvas, config);
+    const obj2 = {
+        myChart,
+        chartCanvas,
+        config,
+        prependCanvas,
+        id,
+    };
 
     if (prependCanvas) {
         container.prepend(chartCanvas);
     } else {
         container.append(chartCanvas);
     }
-    charts.push(myChart);
+    charts.push(obj2);
 }
 
 function parseInput() {
@@ -309,19 +316,44 @@ function menuSwitch() {
     const button = document.getElementById("menu-swap");
     if (isOptions) {
         button.textContent = "Options";
-        div1.style["background-color"] = 'aliceblue';
-        button.style["background-color"] = 'royalblue';
+        div1.style["background-color"] = "aliceblue";
+        button.style["background-color"] = "rgb(131 131 233)";
         title.textContent = "Input Your Own Data!";
         showDiv(div2);
         hideDiv(div3);
         isOptions = false;
         return;
     }
-    div1.style["background-color"] = 'royalblue';
-    button.style["background-color"] = 'aliceblue';
+    div1.style["background-color"] = "rgb(131 131 233)";
+    button.style["background-color"] = "aliceblue";
     title.textContent = "Configuration Settings";
     button.textContent = "Input";
     showDiv(div3);
     hideDiv(div2);
     isOptions = true;
 }
+
+function addChart() {
+    const selection = document.getElementById("add-charts-select");
+    const value = selection.value;
+    const option = selection.querySelector(`[value="${value}"]`);
+}
+
+function removeChart() {
+    const selection = document.getElementById("remove-charts-select");
+    const value = selection.value;
+    const option = selection.querySelector(`[value="${value}"]`);
+    if (!value) {
+        return;
+    }
+    option.remove();
+}
+
+/*
+TODO:
+When a chart gets added, add an option to "add-charts-select" and "remove-charts-select"
+When a chart gets removed, remove the chart/canvas and the option from "remove-charts-select"
+The options of "add-charts-select" should be in the order the charts were added
+The options of "remove-charts-select" should be in the order of the canvases
+Each chart should be able to be identified
+*/
