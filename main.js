@@ -1,3 +1,9 @@
+/**
+ * There's probably a lot I can do to improve this code,
+ * but I'm just happy it just works!
+ * Maybe I'll improve on this code later on.
+ */
+
 const files = [
     {
         file: "data/Carbon_Dioxide.csv",
@@ -116,6 +122,17 @@ document.getElementById("json-data").placeholder = templateString;
     }
 })();
 
+function filterShown(chartsArr) {
+    const chartLen = chartsArr.length;
+    for (let i = chartLen - 1; i >= 0; i--) {
+        const elem = chartsArr[i];
+        let isSelected = elem.chartCanvas.isConnected;
+        if (!isSelected) {
+            chartsArr.splice(i, 1);
+        }
+    }
+}
+
 async function parseData(obj, prependCanvas) {
     const { file, id, title, type, xAxis, yAxes, xAxisTitle, yAxisTitle } = obj;
     if (!obj.data) {
@@ -201,6 +218,45 @@ async function parseData(obj, prependCanvas) {
     };
 
     addChartData({ config, prependCanvas, id });
+    addEntry(title, prependCanvas);
+}
+
+let fileInd1 = 0;
+let fileInd2 = 0;
+function addEntry(title, prependCanvas) {
+    const isNew = fileInd1 < files.length;
+    if (isNew) {
+        addLeft(title, prependCanvas);
+    }
+    addRight(title, prependCanvas);
+}
+
+function addLeft(title, prependCanvas) {
+    const selection1 = document.getElementById("add-charts-select");
+    const default1 = selection1.querySelector("option:nth-child(1)");
+    const option1 = document.createElement("option");
+    option1.setAttribute("value", fileInd1);
+    option1.textContent = title;
+    fileInd1++;
+    if (prependCanvas) {
+        default1.after(option1);
+    } else {
+        selection1.append(option1);
+    }
+}
+
+function addRight(title, prependCanvas) {
+    const selection2 = document.getElementById("remove-charts-select");
+    const default2 = selection2.querySelector("option:nth-child(1)");
+    const option2 = document.createElement("option");
+    option2.setAttribute("value", fileInd2);
+    option2.textContent = title;
+    fileInd2++;
+    if (prependCanvas) {
+        default2.after(option2);
+    } else {
+        selection2.append(option2);
+    }
 }
 
 function addChartData(obj) {
@@ -337,6 +393,10 @@ function addChart() {
     const selection = document.getElementById("add-charts-select");
     const value = selection.value;
     const option = selection.querySelector(`[value="${value}"]`);
+    if (!value) {
+        return;
+    }
+    parseData(files[value], true);
 }
 
 function removeChart() {
@@ -346,14 +406,9 @@ function removeChart() {
     if (!value) {
         return;
     }
+    const chartContainer = document.querySelector("div.chart-container");
+    const chartContainerArr = Array.from(selection.children);
+    const optionInd = chartContainerArr.findIndex((elem) => elem == option) - 1;
+    chartContainer.children[optionInd].remove();
     option.remove();
 }
-
-/*
-TODO:
-When a chart gets added, add an option to "add-charts-select" and "remove-charts-select"
-When a chart gets removed, remove the chart/canvas and the option from "remove-charts-select"
-The options of "add-charts-select" should be in the order the charts were added
-The options of "remove-charts-select" should be in the order of the canvases
-Each chart should be able to be identified
-*/
