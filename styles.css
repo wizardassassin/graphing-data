@@ -1,8 +1,12 @@
-body {
+* {
     font-family: "Roboto", sans-serif;
+}
+
+body {
     background-color: aquamarine;
     text-align: center;
     min-width: 1000px;
+    text-shadow: 4px 4px 4px rgba(128, 0, 122, 0.329);
 }
 
 canvas {
@@ -32,6 +36,7 @@ select {
 
 button {
     background-color: lightgreen;
+    border: 2px solid black;
 }
 
 a {
@@ -41,6 +46,10 @@ a {
 a.external[target="_blank"]::after {
     content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
     margin: 0px 3px 0px 5px;
+}
+
+.add-shadow-box {
+    box-shadow: 0px 0px 10px 3px rgb(128, 0, 121);
 }
 
 #menu-swap {
@@ -102,7 +111,7 @@ a.external[target="_blank"]::after {
     margin-bottom: 16px;
     width: 50vw;
     background-color: aliceblue;
-    border: 4px ridge black;
+    border: 4px solid black;
 }
 
 .simple-container {
@@ -128,5 +137,5 @@ a.external[target="_blank"]::after {
     position: relative;
     margin: auto;
     /* height: 50vh; */
-    width: 75vw;
+    width: 70vw;
 }
